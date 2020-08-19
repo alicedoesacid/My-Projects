@@ -13,7 +13,23 @@ def score_game(game_core):
     return(score)
 
 
+def game4(number):
+    '''Метод через бинарный поиск'''
+    trials = 1
+    predicted = np.random.randint(1,101) 
+    while number != predicted:
+        trials += 1
+        median = (predict + number) / 2 # находим среднее число
 
+        if predict > number: # проверяем 
+            predict = int(round(median)) - 2 ##округляем чтобы не уйти в бесконечные дроби и вычитаем два для быстрого поиска
+
+        elif predict < number: # проверяем опять если стало меньше
+            predict = int(round(median)) + 1 ## округляем и прибавляем 1 чтобы выйти на нужное нам число
+
+    return(trials) # выход из цикла, если угадали
+    
+    
 def game3(number):
     trials = 1
     predicted = np.random.randint(1,101)
@@ -42,4 +58,4 @@ def game3(number):
                 number += 1
     return(trials)
 
-print(score_game(game3))
+print(score_game(game4))
