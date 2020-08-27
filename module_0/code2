@@ -57,5 +57,29 @@ def game3(number):
             elif number < predicted:
                 number += 1
     return(trials)
+    
+    
+def game_5(number):
+    '''Поиск через бинарную сортировку: 
+    Задача состоит в том чтобы создать алгоритм который будет сужать рамки поиска, и как можно быстрее найдёт середину'''
+    trials = 1 # Создаём счетчик
+    
+    bot, top = 0, 101   # задаём границы
+    predict = (bot + top) // 2 # вместо случайного номера, начнем с середины
+    while predict != number:  # сердце цикла, проверяем если угадали
+        trials += 1 # плюсуем счётчик
+        predict = (bot + top) // 2  # находим новую медиану
+        
+        if predict == number: # Угадали!
+            return predict
 
-print(score_game(game4))
+        elif predict < number: ## Задаём новую нижнюю границу если угадываемый номер больше
+            predict += 1
+            bot = predict
+        elif predict > number:## Задаём новую верхнюю границу если угадываемый номер меньше
+            predict -= 1
+            top = predict
+            
+    return(trials)
+
+print(score_game(game_5))
